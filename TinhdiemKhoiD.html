@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tính điểm đại học khối D</title>
+</head>
+<body>
+	<h1>Tính điểm đại học khối D</h1>
+	<form>
+		<label for="diem-toan">Điểm Toán:</label>
+		<input type="text" id="diem-toan" name="diem-toan"><br>
+
+		<label for="diem-ly">Điểm Lý:</label>
+		<input type="text" id="diem-ly" name="diem-ly"><br>
+
+		<label for="diem-hoa">Điểm Hóa:</label>
+		<input type="text" id="diem-hoa" name="diem-hoa"><br>
+
+		<button onclick="tinhDiem()">Tính điểm</button>
+	</form>
+
+	<p id="result"></p>
+
+	<script>
+		function tinhDiem() {
+			// Lấy giá trị điểm từ các ô input
+			var diemToan = parseFloat(document.getElementById("diem-toan").value);
+			var diemLy = parseFloat(document.getElementById("diem-ly").value);
+			var diemHoa = parseFloat(document.getElementById("diem-hoa").value);
+
+			// Khai báo giá trị điểm chuẩn
+			var diemChuan = 24.5;
+
+			// Tính tổng điểm và kiểm tra kết quả
+			var tongDiem = diemToan + diemLy + diemHoa;
+			if (tongDiem >= diemChuan) {
+			    document.getElementById("result").innerHTML = "Chúc mừng! Bạn đã đậu.";
+			} else {
+			    document.getElementById("result").innerHTML = "Rất tiếc! Bạn đã trượt.";
+			}
+		}
+	</script>
+</body>
+</html>
