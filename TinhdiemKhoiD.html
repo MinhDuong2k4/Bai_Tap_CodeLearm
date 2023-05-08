@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>Tính điểm đại học khối D</h1>
-	<form>
+	<br>
 		<label for="diem-toan">Điểm Toán:</label>
 		<input type="text" id="diem-toan" name="diem-toan"><br>
 
@@ -15,30 +15,47 @@
 
 		<label for="diem-hoa">Điểm Hóa:</label>
 		<input type="text" id="diem-hoa" name="diem-hoa"><br>
+         <select id="region">
+      <option value="KV1">KV1</option>
+      <option value="KV2-NT">KV2-NT</option>
+      <option value="KV2">KV2</option>
+      <option value="KV3">KV3</option>
+    </select>
 
-		<button onclick="tinhDiem()">Tính điểm</button>
+</br><button onclick="tinhDiem()">Tính điểm</button>
 	</form>
 
 	<p id="result"></p>
 
 	<script>
-		function tinhDiem() {
-			// Lấy giá trị điểm từ các ô input
-			var diemToan = parseFloat(document.getElementById("diem-toan").value);
-			var diemLy = parseFloat(document.getElementById("diem-ly").value);
-			var diemHoa = parseFloat(document.getElementById("diem-hoa").value);
+        function calAvg() {
+  let toan = document.getElementById("Toan").value;
+  let van = document.getElementById("Van").value;
+  let anh = document.getElementById("Anh").value;
+  let kv = document.getElementById("khuvuc").value;
+  let tong = parseFloat(toan) + parseFloat(van) + parseFloat(anh);
+  let result = 0;
+  switch (kv) {
+    case "KV1":
+      result = tong + parseFloat(0.75);
+      alert(`Tổng điểm là ${result}`);
+      break;
+    case "KV2NT":
+      result = tong + parseFloat(0.5);
+      alert(`Tổng điểm là ${result}`);
+      break;
 
-			// Khai báo giá trị điểm chuẩn
-			var diemChuan = 24.5;
+    case "KV2":
+      result = tong + parseFloat(0.25);
+      alert(`Tổng điểm là ${result}`);
+      break;
+    default:
+      alert(`Tổng điểm là ${tong}`);
+      break;
+  }
+}
 
-			// Tính tổng điểm và kiểm tra kết quả
-			var tongDiem = diemToan + diemLy + diemHoa;
-			if (tongDiem >= diemChuan) {
-			    document.getElementById("result").innerHTML = "Chúc mừng! Bạn đã đậu.";
-			} else {
-			    document.getElementById("result").innerHTML = "Rất tiếc! Bạn đã trượt.";
-			}
-		}
-	</script>
+
+    </script>
 </body>
 </html>
