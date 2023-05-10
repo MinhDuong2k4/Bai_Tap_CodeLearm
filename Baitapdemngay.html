@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tính số ngày của tháng, năm</title>
+</head>
+<body>
+    <h1>Tính số ngày của tháng, năm</h1>
+    <form>
+        <label for="thang">Tháng:</label>
+        <input type="text" id="thang" name="thang"><br>
+
+        <label for="nam">Năm:</label>
+        <input type="text" id="nam" name="nam"><br>
+
+        <button onclick="tinhSoNgay()">Tính số ngày</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function tinhSoNgay() {
+            // Lấy giá trị tháng và năm từ các ô input
+            var thang = parseInt(document.getElementById("thang").value);
+            var nam = parseInt(document.getElementById("nam").value);
+
+            // Kiểm tra tháng năm có hợp lệ hay không
+            if (thang < 1 || thang > 12) {
+                document.getElementById("result").innerHTML = "Tháng không hợp lệ";
+                return;
+            }
+            if (nam < 1) {
+                document.getElementById("result").innerHTML = "Năm không hợp lệ";
+                return;
+            }
+
+            // Tính số ngày trong tháng
+            var soNgay;
+            switch (thang) {
+                case 2:
+                    if ((nam % 4 == 0 && nam % 100 != 0) || nam % 400 ==0) {
+                        soNgay = 29;
+                    } else {
+                        soNgay = 28;
+                    }
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    soNgay = 30;
+                    break;
+                default:
+                    soNgay = 31;
+            }
+
+            // Hiển thị kết quả
+            
+            document.getElementById('result').textContent='tháng '+ thang +' năm '+ nam +' có ' + soNgay +'ngày'; }
+           
+            </script>
+</body>
+</html>
